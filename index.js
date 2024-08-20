@@ -18,8 +18,6 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/api/users", users);
-// app.use("/api/login", login);
-
 
 // connection
 const connectionString = `${process.env.MONGO_URI}${process.env.MONGO_DB}?retryWrites=true&w=majority&appName=Cluster-1`;
