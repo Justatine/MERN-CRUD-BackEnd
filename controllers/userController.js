@@ -4,7 +4,11 @@ const mongoose = require("mongoose");
 const getUsers = async (req, res) => {
     try {
         const users = await User.find();
-        res.status(200).json(users);
+        if (users) {
+            res.status(200).json({ data:users });
+        }else{
+            res.status(404).json({ data:'No users found' });
+        }
     } catch (error) {
         res.status(500).json({ message: 'Error fetching users', error: error.message });
     }
@@ -14,11 +18,14 @@ const getUser = async (req, res) => {
     const { id } = req.params;
     try {
         const userinfo = await User.findOne({ _id:id })
-
+        if (userinfo) {
+            res.status(200).json({ data:userinfo });
+        } else {
+            res.status(404).json({ data:'No data found' });
+        }
         // Find a user by ID -> const user = await User.findById('someuserid');
         // Find one user by a specific field -> const user = await User.findOne({ email: 'john@example.com' });
 
-        res.status(200).json({ data:userinfo });
     } catch (error) {
         res.status(500).json({ message: 'Error fetching user info', error:error.message });
     }
