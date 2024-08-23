@@ -17,7 +17,7 @@ router.post('/create', createUser);
 
 router.put('/update/:id', updateUser);
 
-router.delete('/archive/:id', archiveUser);
+router.delete('/archive', archiveUser);
 
 router.post('/login', loginUser);
 

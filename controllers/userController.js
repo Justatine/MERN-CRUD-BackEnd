@@ -43,7 +43,7 @@ const createUser = async (req, res) => {
             role: role,
             username: username,
         });
-        res.status(200).json({ status: 'success', user: newUser });
+        res.status(200).json({ message: 'User Saved', status: 'success', user: newUser });
 
     } catch (error) {
         res.status(500).json({ message: 'Error adding user', error: error.message });
@@ -61,9 +61,9 @@ const updateUser = async (req, res) => {
         //  can use modifiedCount or matchedCount
 
         if (updateUser.modifiedCount > 0) {
-            res.status(200).json({ message: 'User updated successfully' });
+            res.status(200).json({ status: 'success', message: 'User updated successfully' });
         } else {
-            res.status(404).json({ message: 'User not found or nothing to update' });
+            res.status(404).json({ status: 'failed', message: 'User not found or nothing to update' });
         }
 
         // Using find ID
@@ -76,15 +76,15 @@ const updateUser = async (req, res) => {
 
 const archiveUser = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id } = req.body;
         const deleteUser = await User.deleteOne({ _id:id });
         // Delete a user by ID -> const deletedUser = await User.findByIdAndDelete(id);
 
         if (deleteUser) {
-            res.status(200).json({ message: 'User deleted successfully'});
+            res.status(200).json({ status: 'success', message: 'User deleted successfully'});
         }        
     } catch (error) {
-        res.status(500).json({ message: 'Error deleting user', error: error.message });
+        res.status(500).json({ status: 'failed', message: 'Error deleting user', error: error.message });
     }
 }
 

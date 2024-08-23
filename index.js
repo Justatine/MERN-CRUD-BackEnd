@@ -5,9 +5,13 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const users = require('./routes/users'); 
+const cors = require('cors');
 
 //express app
 const app = express();
+
+// all all origin
+app.use(cors()); 
 
 // middleware
 app.use(express.json());
