@@ -6,6 +6,7 @@ const {
     updateUser,
     archiveUser,
     loginUser,
+    registerUser,
     getUser,
     getUsers
 } = require('../controllers/userController')
@@ -20,6 +21,8 @@ router.put('/update/:id', updateUser);
 router.delete('/archive', archiveUser);
 
 router.post('/login', loginUser);
+
+router.post('/register', registerUser);
 
 router.get('/:id', getUser);
 
