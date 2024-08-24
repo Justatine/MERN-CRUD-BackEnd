@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const verifyJWT = require('../middleware/verifyJWT');
 
 const {
     createUser,
@@ -10,7 +11,7 @@ const {
 } = require('../controllers/userController')
 
 // API 
-router.get('/', getUsers);
+router.get('/', verifyJWT, getUsers);
 
 router.post('/create', createUser);
 
