@@ -6,7 +6,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const users = require('./routes/users'); 
 const auth = require('./routes/auth');
+const refresh = require('./routes/refresh');
 const cors = require('cors');
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 
 //express app
 const app = express();
@@ -21,9 +24,13 @@ app.use((req, res, next) => {
   next();
 });
 
+// middleware for cookies
+app.use(cookieParser());
+
 // routes
-app.use("/api/users", users);
 app.use("/api/auth", auth);
+app.use("/api/refresh", refresh);
+app.use("/api/users", verifyJWT, users);
 
 // connection
 const connectionString = `${process.env.MONGO_URI}${process.env.MONGO_DB}?retryWrites=true&w=majority&appName=Cluster-1`;

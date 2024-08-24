@@ -11,14 +11,14 @@ const {
 } = require('../controllers/userController')
 
 // API 
-router.get('/', verifyJWT, getUsers);
+router.get('/', getUsers);
+
+router.get('/:id', getUser);
 
 router.post('/create', createUser);
 
 router.put('/update/:id', updateUser);
 
 router.delete('/archive', archiveUser);
-
-router.get('/:id', getUser);
 
 module.exports = router;
