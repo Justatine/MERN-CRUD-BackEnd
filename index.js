@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const users = require('./routes/users'); 
 const auth = require('./routes/auth');
 const refresh = require('./routes/refresh');
+const logout = require('./routes/logout');
 const cors = require('cors');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
@@ -30,6 +31,7 @@ app.use(cookieParser());
 // routes
 app.use("/api/auth", auth);
 app.use("/api/refresh", refresh);
+app.use("/api/logout", logout);
 app.use("/api/users", verifyJWT, users);
 
 // connection
