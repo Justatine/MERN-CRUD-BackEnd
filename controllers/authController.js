@@ -41,10 +41,10 @@ const loginUser = async (req, res) => {
 
             await fsPromises.writeFile(usersFilePath, JSON.stringify(updatedUsers));
 
-            res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 100 });
-            res.status(200).json({ status: 'success', message: 'Login successful', accessToken });
+            res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 100 });
+            res.status(200).json({ userRole: login.role, status: 'success', message: 'Login successful',  accessToken: accessToken });
         } else {
-            res.status(200).json({ status: 'failed', message: 'User not found' });
+            res.status(200).json({ status: 'failed', message: 'Login failed. Invalid username / password.' });
         }
     } catch (error) {
         res.status(500).json({ status: 'failed', message: 'Error logging user', error: error.message });

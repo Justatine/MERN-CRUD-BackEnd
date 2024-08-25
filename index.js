@@ -11,12 +11,18 @@ const logout = require('./routes/logout');
 const cors = require('cors');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
+const credentials = require('./middleware/credentials');
+const corsOptions = require('./config/corsOptions');
 
 //express app
 const app = express();
 
 // all all origin
-app.use(cors()); 
+// app.use(cors()); 
+app.use(credentials)
+
+// Cross Origin Resource Sharing
+app.use(cors(corsOptions))
 
 // middleware
 app.use(express.json());
