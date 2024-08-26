@@ -1,1 +1,14 @@
-[{"_id":"66c2a155c7591dc52dff2e64","firstname":"adelle","lastname":"andales","idno":1800328,"image":null,"password":"123","role":"Student","username":"adelle","refreshToken":""},{"_id":"66c2a0c3c7591dc52dff2e62","firstname":"Justine Mark","lastname":"Taga-an","idno":1800326,"image":"","password":"qwe","role":"Admin","username":"qwe","updatedAt":"2024-08-23T02:14:53.444Z","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTcyNDU1NDMyMiwiZXhwIjoxNzI0NjQwNzIyfQ.ExcEsjB9b-rpzFAEoSxbXdMkmtGgfbBzI_3yNZS4Bfc"}]
+[
+  {
+    "_id": "66c2a0c3c7591dc52dff2e62",
+    "firstname": "Justine Mark",
+    "lastname": "Taga-an",
+    "idno": 1800326,
+    "image": "",
+    "password": "asd",
+    "role": "Admin",
+    "username": "asd",
+    "updatedAt": "2024-08-25T02:56:49.851Z",
+    "refreshToken": ""
+  }
+]

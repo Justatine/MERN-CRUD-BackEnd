@@ -7,7 +7,9 @@ const usersFilePath = path.join(__dirname, '..', 'models', 'users.json');
 const handleRefreshToken = async (req, res) => {
     try {
         const cookies = req.cookies;
+        // console.log('cookiesss:',cookies)
         if (!cookies?.jwt) return res.sendStatus(401);
+        // console.log('cookies.jwt', cookies.jwt)
         const refreshToken = cookies.jwt;
 
         const usersData = await fsPromises.readFile(usersFilePath, 'utf-8');

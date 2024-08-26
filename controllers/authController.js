@@ -19,7 +19,7 @@ const loginUser = async (req, res) => {
             const refreshToken = jwt.sign(
                 { username: login.username },
                 process.env.REFRESH_TOKEN_SECRET,
-                { expiresIn: '1d' }
+                { expiresIn: '7d' }
             );
 
             const usersFilePath = path.join(__dirname, '..', 'models', 'users.json');
@@ -41,7 +41,7 @@ const loginUser = async (req, res) => {
 
             await fsPromises.writeFile(usersFilePath, JSON.stringify(updatedUsers));
 
-            res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 100 });
+            res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: false, maxAge: 24 * 60 * 60 * 100 });
             res.status(200).json({ userRole: login.role, status: 'success', message: 'Login successful',  accessToken: accessToken });
         } else {
             res.status(200).json({ status: 'failed', message: 'Login failed. Invalid username / password.' });

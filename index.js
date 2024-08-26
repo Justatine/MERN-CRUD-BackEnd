@@ -4,13 +4,13 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 const users = require('./routes/users'); 
 const auth = require('./routes/auth');
 const refresh = require('./routes/refresh');
 const logout = require('./routes/logout');
-const cors = require('cors');
-const verifyJWT = require('./middleware/verifyJWT');
-const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const corsOptions = require('./config/corsOptions');
 
