@@ -6,6 +6,6 @@ const {
 } = require('../controllers/logoutController')
 
 // API
-router.get('/', handleLogout);
+router.post('/', handleLogout);
 
 module.exports = router;

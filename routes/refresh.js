@@ -6,6 +6,6 @@ const {
 } = require('../controllers/refreshTokenController')
 
 // API
-router.get('/', handleRefreshToken);
+router.post('/', handleRefreshToken);
 
 module.exports = router;
